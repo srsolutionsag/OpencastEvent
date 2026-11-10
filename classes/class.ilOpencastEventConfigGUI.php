@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use elanev\OpencastEvent\Config\PluginConfig as LocalPluginConfig;
+
 /**
  * ilOpencastEventConfigGUI
  *
@@ -12,29 +13,11 @@ use elanev\OpencastEvent\Config\PluginConfig as LocalPluginConfig;
  */
 class ilOpencastEventConfigGUI extends ilPluginConfigGUI
 {
-    /**
-     * @var elanev\OpencastEvent\Config\PluginConfig
-     */
     protected LocalPluginConfig $config_object;
-    /**
-     * @var \ilCtrlInterface
-     */
     protected ilCtrlInterface $ctrl;
-    /**
-     * @var \ilGlobalTemplateInterface
-     */
     protected ilGlobalTemplateInterface $main_tpl;
-    /**
-     * @var \ilLanguage
-     */
     protected ilLanguage $language;
-    /**
-     * @var \ilTabsGUI
-     */
     protected ilTabsGUI $tabs;
-    /**
-     * @var \ilPropertyFormGUI
-     */
     protected ilPropertyFormGUI $form;
 
     public function __construct()
@@ -48,9 +31,6 @@ class ilOpencastEventConfigGUI extends ilPluginConfigGUI
     }
 
 
-    /**
-     * @return array
-     */
     public function getFields(): array
     {
         return [
@@ -61,11 +41,6 @@ class ilOpencastEventConfigGUI extends ilPluginConfigGUI
                 'value' => (bool) $this->config_object::getConfig($this->config_object::F_THUMBNAIL_LINK) ?? false
             ]
         ];
-    }
-
-    public function executeCommand(): void
-    {
-        parent::executeCommand();
     }
 
     public function performCommand($cmd): void
@@ -103,9 +78,6 @@ class ilOpencastEventConfigGUI extends ilPluginConfigGUI
     }
 
 
-    /**
-     * @return ilPropertyFormGUI
-     */
     public function initConfigurationForm(): \ilPropertyFormGUI
     {
         $this->form = new \ilPropertyFormGUI();
@@ -157,7 +129,6 @@ class ilOpencastEventConfigGUI extends ilPluginConfigGUI
 
     /**
      * @param string $key the key lang string
-     * @return string
      */
     public function txt(string $key): string
     {
